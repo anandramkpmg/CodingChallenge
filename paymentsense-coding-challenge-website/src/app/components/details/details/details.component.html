@@ -1,0 +1,90 @@
+<div class="grid-container">
+    <h1 class="mat-h1 center-item">{{ name }}</h1>
+    <mat-grid-list cols="2" rowHeight="350px" *ngIf="cards.length > 0">
+
+        <!-- LOCATION -->
+        <mat-grid-tile [colspan]="cards[3].cols" [rowspan]="cards[3].rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ name }}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <mat-label>Capital : {{ cards[3].capital }}</mat-label><br>
+                    <mat-label>Population : {{ cards[3].population }}</mat-label><br>
+                    <mat-label>TimeZones : {{ cards[3].timezones }}</mat-label><br>
+                    <mat-label>Borders : {{ cards[3].borders }}</mat-label>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+
+        <!--FLAG-->
+        <mat-grid-tile [colspan]="cards[0].cols" [rowspan]="cards[0].rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ cards[0].title }}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <img mat-card-xl-image [src]="cards[0].flag" class="">
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+
+        <!-- CURRENCIES -->
+        <mat-grid-tile [colspan]="cards[1].cols" [rowspan]="cards[1].rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ cards[1].title }}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <mat-list role="list">
+                        <mat-list-item role="listitem" *ngFor="let currency of cards[1].currencies">
+                            {{ currency.code }} | {{ currency.name }} | {{ currency.symbol }}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+
+        <!-- LANGUAGES -->
+        <mat-grid-tile [colspan]="cards[2].cols" [rowspan]="cards[2].rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ cards[2].title }}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="mat-elevation-z8">
+                        <table mat-table class="full-width-table" [dataSource]="languagesDatasource"
+                            aria-label="Elements">
+                            <ng-container matColumnDef="iso639_1">
+                                <th mat-header-cell *matHeaderCellDef>iso639_1</th>
+                                <td mat-cell *matCellDef="let row">{{ row.iso639_1 }}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="iso639_2">
+                                <th mat-header-cell *matHeaderCellDef>iso639_2</th>
+                                <td mat-cell *matCellDef="let row">{{ row.iso639_2 }}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef>Name</th>
+                                <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="nativeName">
+                                <th mat-header-cell *matHeaderCellDef>Native Name</th>
+                                <td mat-cell *matCellDef="let row">{{ row.nativeName }}</td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="LANGUAGES_COLUMNS"></tr>
+                            <tr mat-row *matRowDef="let row; columns: LANGUAGES_COLUMNS;"></tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

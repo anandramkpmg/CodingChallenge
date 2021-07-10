@@ -16,22 +16,23 @@ export class AppComponent {
   public paymentsenseCodingChallengeApiActiveIcon = this.faThumbsDown;
   public paymentsenseCodingChallengeApiActiveIconColour = 'red';
 
-  constructor(private paymentsenseCodingChallengeApiService: PaymentsenseCodingChallengeApiService) {
-    paymentsenseCodingChallengeApiService.getHealth().pipe(take(1))
-    .subscribe(
-      apiHealth => {
-        this.paymentsenseCodingChallengeApiIsActive = apiHealth === 'Healthy';
-        this.paymentsenseCodingChallengeApiActiveIcon = this.paymentsenseCodingChallengeApiIsActive
-          ? this.faThumbsUp
-          : this.faThumbsUp;
-        this.paymentsenseCodingChallengeApiActiveIconColour = this.paymentsenseCodingChallengeApiIsActive
-          ? 'green'
-          : 'red';
-      },
-      _ => {
-        this.paymentsenseCodingChallengeApiIsActive = false;
-        this.paymentsenseCodingChallengeApiActiveIcon = this.faThumbsDown;
-        this.paymentsenseCodingChallengeApiActiveIconColour = 'red';
-      });
-  }
+  //TODO : DO some thing similar
+  // constructor(private paymentsenseCodingChallengeApiService: PaymentsenseCodingChallengeApiService) {
+  //   paymentsenseCodingChallengeApiService.getHealth().pipe(take(1))
+  //   .subscribe(
+  //     apiHealth => {
+  //       this.paymentsenseCodingChallengeApiIsActive = apiHealth === 'Healthy';
+  //       this.paymentsenseCodingChallengeApiActiveIcon = this.paymentsenseCodingChallengeApiIsActive
+  //         ? this.faThumbsUp
+  //         : this.faThumbsUp;
+  //       this.paymentsenseCodingChallengeApiActiveIconColour = this.paymentsenseCodingChallengeApiIsActive
+  //         ? 'green'
+  //         : 'red';
+  //     },
+  //     _ => {
+  //       this.paymentsenseCodingChallengeApiIsActive = false;
+  //       this.paymentsenseCodingChallengeApiActiveIcon = this.faThumbsDown;
+  //       this.paymentsenseCodingChallengeApiActiveIconColour = 'red';
+  //     });
+  // }
 }
