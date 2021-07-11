@@ -14,15 +14,18 @@ export class CountriesComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   dataSource: any;
   COLUMNS = ['name', 'capital', 'flag', 'view'];
+  loading:boolean;
 
-  constructor(private countriesService: CountriesService) { }
+  constructor(private countriesService: CountriesService) { this.loading = true; }
 
   ngOnInit() {
     this.countriesService.getAll().subscribe((data: Country[]) => {
       this.dataSource = new MatTableDataSource<Country>(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.loading = false;
     }, err => {
+      this.loading = false;
       console.log(err);
     });
   }

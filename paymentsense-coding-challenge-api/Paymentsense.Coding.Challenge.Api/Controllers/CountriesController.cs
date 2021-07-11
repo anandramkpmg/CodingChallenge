@@ -28,11 +28,19 @@ namespace Paymentsense.Coding.Challenge.Api.Controllers
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<Country>> Get(string name)
+        public async Task<ActionResult<IList<Country>>> Get(string name)
         {
             var country = await _countryService.GetCountryDetails(name);
 
             return Ok(country);
+        }
+
+        [HttpPost]
+        public ActionResult<Country> PostCountry(Country country)
+        {
+            var postedCountry = _countryService.PostCountry(country);
+
+            return Ok(postedCountry);
         }
     }
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Paymentsense.Coding.Challenge.Api.Cache;
 using Paymentsense.Coding.Challenge.Api.Clients;
 using Paymentsense.Coding.Challenge.Api.Services;
 
@@ -32,8 +33,9 @@ namespace Paymentsense.Coding.Challenge.Api
                 });
             });
 
-            services.AddScoped<ICountryService, CountryService>();
-            services.AddScoped<ICountryApiClient, CountryApiClient>();
+            services.AddSingleton<ICountryService, CountryService>();
+            services.AddSingleton<ICountryApiClient, CountryApiClient>();
+            services.AddSingleton<ICountryCache, CountryCache>();
             services.AddHttpClient();
         }
 
