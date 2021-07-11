@@ -1,0 +1,21 @@
+<form [formGroup]="countryForm" (ngSubmit)="onSubmit()">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="country-Name"> CountryName:</mat-label>
+                    <input matInput id="country-Name" type="text" formControlName="countryName">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="capital-name">Capital: </mat-label>
+                    <input matInput id="capital-name" type="text" formControlName="capital">
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <button type="submit" mat-raised-button color="primary" [disabled]="!countryForm.valid">Add</button>
+        </tr>
+    </table>
+</form>

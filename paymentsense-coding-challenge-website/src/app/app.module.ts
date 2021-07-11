@@ -12,13 +12,17 @@ import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import { MaterialModule } from './material.module';
 import { CountriesService } from './services/country.service';
 import { DetailsComponent } from './components/details/details/details.component';
+import { AddcountryComponent } from './components/addcountries/addcountry/addcountry.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountriesComponent,
     NavbarComponent,
-    DetailsComponent
+    DetailsComponent,
+    AddcountryComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { DetailsComponent } from './components/details/details/details.component
     BrowserAnimationsModule,
     HttpClientModule,
     FontAwesomeModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [CountriesService],
   bootstrap: [AppComponent]
