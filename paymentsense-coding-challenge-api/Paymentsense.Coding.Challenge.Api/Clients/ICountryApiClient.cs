@@ -7,7 +7,5 @@ namespace Paymentsense.Coding.Challenge.Api.Clients
     public interface ICountryApiClient
     {
         Task<IList<Country>> GetCountries();
-
-        Task<IList<Country>> GetCountryDetails(string name);
     }
 }

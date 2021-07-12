@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { Country } from 'src/app/interfaces/country';
+import { ICountry } from 'src/app/interfaces/country';
 import { CountriesService } from 'src/app/services/country.service';
 
 @Component({
@@ -19,8 +19,8 @@ export class CountriesComponent implements OnInit {
   constructor(private countriesService: CountriesService) { this.loading = true; }
 
   ngOnInit() {
-    this.countriesService.getAll().subscribe((data: Country[]) => {
-      this.dataSource = new MatTableDataSource<Country>(data);
+    this.countriesService.getAll().subscribe((data: ICountry[]) => {
+      this.dataSource = new MatTableDataSource<ICountry>(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;

@@ -24,8 +24,7 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.countriesService.getCountry(this.name).subscribe(data => {
-      console.log("received", data);
+    this.countriesService.getCountry(this.name).subscribe(data => {            
       this.languagesDatasource = new MatTableDataSource<Languages>(data.languages);
       this.cards = [
         { title: 'Flag', cols: 1, rows: 1, flag: data.flag },

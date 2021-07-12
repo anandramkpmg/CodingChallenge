@@ -42,27 +42,20 @@ namespace Paymentsense.Coding.Challenge.Api.Tests.Services
         }
 
         [Fact]
-        public async void GetCountry_ByName_GetsCountry()
+        public void GetCountry_ByName_GetsCountry()
         {
-            var _countriesMock = new List<Country>
-            {
-                GetTestCountry()
-            };
-
             var countryName = "England";
             var mockCountriesApiClient = new Mock<ICountryApiClient>();
-            mockCountriesApiClient.Setup(c => c.GetCountryDetails(countryName)).ReturnsAsync(_countriesMock);
 
             var mockCache = new Mock<ICountryCache>();
-            mockCache.Setup(c => c.GetCountries()).Returns(GetCountryList());
+            mockCache.Setup(c => c.GetCountryDetails(countryName)).Returns(GetTestCountry());
 
             var countriesService = new CountryService(mockCountriesApiClient.Object, mockCache.Object);
 
-            var result = await countriesService.GetCountryDetails(countryName);
+            var result = countriesService.GetCountryDetails(countryName);
 
-            result.Should().BeOfType<List<Country>>();
-            result.Should().BeSameAs(_countriesMock);
-            mockCountriesApiClient.Verify(c => c.GetCountryDetails(countryName), Times.Once);
+            result.Should().BeOfType<Country>();
+            mockCache.Verify(c => c.GetCountryDetails(countryName), Times.Once);
         }
 
         [Fact]

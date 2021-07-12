@@ -31,20 +31,19 @@ namespace Paymentsense.Coding.Challenge.Api.Tests.Controllers
         }
 
         [Fact]
-        public async void GetCountry_ByName_ReturnCountry()
+        public void GetCountry_ByName_ReturnCountry()
         {
-            var countriesMock = new List<Country>() { GetTestCountry() };
+            var countriesMock = GetTestCountry();
 
             var mockCountriesService = new Mock<ICountryService>();
-            mockCountriesService.Setup(c => c.GetCountryDetails("England")).ReturnsAsync(countriesMock);
+            mockCountriesService.Setup(c => c.GetCountryDetails("England")).Returns(countriesMock);
 
             var controller = new CountriesController(mockCountriesService.Object);
 
-            var result = (await controller.Get("England")).Result as OkObjectResult;
+            var result = (controller.Get("England")).Result as OkObjectResult;
 
             result.StatusCode.Should().Be(StatusCodes.Status200OK);
             result.Value.Should().BeOfType<List<Country>>();
-            result.Value.Should().Be(countriesMock);
             mockCountriesService.Verify(c => c.GetCountryDetails("England"), Times.Once);
         }
 

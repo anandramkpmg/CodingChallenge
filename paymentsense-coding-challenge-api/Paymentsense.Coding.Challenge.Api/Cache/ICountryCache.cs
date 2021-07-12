@@ -10,5 +10,6 @@ namespace Paymentsense.Coding.Challenge.Api.Cache
         bool LoadAllCountries(IList<Country> countries);
         Country AddCountry(Country country);
         bool IsLoaded { get; }
+        Country GetCountryDetails(string name);
     }
 }

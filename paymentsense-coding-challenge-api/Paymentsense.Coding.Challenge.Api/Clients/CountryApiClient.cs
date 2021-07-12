@@ -19,18 +19,18 @@ namespace Paymentsense.Coding.Challenge.Api.Clients
         {
             using var client = _clientFactory.CreateClient();
 
-            var responseStream = client.GetStreamAsync("https://restcountries.eu/rest/v2/all?fields=name;flag;capital");
+            var responseStream = client.GetStreamAsync("https://restcountries.eu/rest/v2/all?fields=name;flag;capital;population;timezones;currencies;languages;borders");
             return await JsonSerializer.DeserializeAsync<IList<Country>>(await responseStream);
         }
 
-        public async Task<IList<Country>> GetCountryDetails(string name)
-        {
-            using var client = _clientFactory.CreateClient();
+        //public async Task<IList<Country>> GetCountryDetails(string name)
+        //{
+        //    using var client = _clientFactory.CreateClient();
 
-            var responseStream = client.GetStreamAsync("https://restcountries.eu/rest/v2/name/" + name);
+        //    var responseStream = client.GetStreamAsync("https://restcountries.eu/rest/v2/name/" + name);
 
-            return await JsonSerializer.DeserializeAsync<IList<Country>>(await responseStream);
-        }
+        //    return await JsonSerializer.DeserializeAsync<IList<Country>>(await responseStream);
+        //}
 
     }
 }

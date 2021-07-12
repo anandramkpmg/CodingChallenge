@@ -1,4 +1,4 @@
-export interface Languages {
+export interface ILanguages {
     iso639_1:string,
     iso639_2: string,
     name: string,

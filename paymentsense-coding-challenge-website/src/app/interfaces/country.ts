@@ -1,7 +1,7 @@
 import { Currency } from "./currency";
 import { Languages } from "./languages";
 
-export interface Country {
+export interface ICountry {
     name: string;
     capital: string;
     flag: string;

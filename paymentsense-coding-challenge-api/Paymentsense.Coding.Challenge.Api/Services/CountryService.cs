@@ -32,9 +32,10 @@ namespace Paymentsense.Coding.Challenge.Api.Services
             }
         }
 
-        public async Task<IList<Country>> GetCountryDetails(string name)
+        public Country GetCountryDetails(string name)
         {
-            return await _countryApiClient.GetCountryDetails(name);
+            return _cache.GetCountryDetails(name);
+
         }
 
         public Country PostCountry(Country country)

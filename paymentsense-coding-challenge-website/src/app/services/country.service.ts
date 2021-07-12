@@ -22,7 +22,7 @@ export class CountriesService {
       })
     );
   }
-
+  
   addCountry(country: Country) {
     let url = `${BASE_URL}`;
     console.log(country);

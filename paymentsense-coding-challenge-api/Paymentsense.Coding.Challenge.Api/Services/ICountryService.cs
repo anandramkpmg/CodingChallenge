@@ -8,7 +8,7 @@ namespace Paymentsense.Coding.Challenge.Api.Services
     {
         Task<IList<Country>> GetCountries();
 
-        Task<IList<Country>> GetCountryDetails(string name);
+        Country GetCountryDetails(string name);
 
         Country PostCountry(Country country);
     }
